@@ -758,3 +758,24 @@ body {
   margin-left: 280px;
   margin-top: 0px;
 }
+
+@-webkit-keyframes blurShitLoad {
+  0% {
+    filter: blur(15px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
+@keyframes blurShitLoad {
+  0% {
+    filter: blur(15px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
+div.chat-3bRxxu img{
+  -webkit-animation: blurShitLoad 8s;
+    animation: blurShitLoad 8s;
+}

@@ -25,7 +25,7 @@ body{
   display: flex;
   grid-column: 1 / 4;
   background-position: center;
-  background-image: url(../great-imagery/gold-bg.GIF);
+  background-image: url(../great-imagery/gold-bg.gif);
 }
 
 #guild-intro{
@@ -34,7 +34,7 @@ body{
   margin: 0 5vw 0 5vw;
 }
 #guild-intro div {
-    background-image: url(../great-imagery/topbg-left.GIF);
+    background-image: url(../great-imagery/topbg-left.gif);
     background-position: bottom;
 }
 #guild-intro > *{

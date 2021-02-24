@@ -11,6 +11,9 @@ body{
 .footer-link span{
     text-decoration: underline;
     color: blue;
+    width: 100%;
+    display: inline-block;
+    cursor: pointer;
 }
 .footer-link audio{
     width: 150px;
@@ -51,7 +54,7 @@ body{
   color: pink;
   font-family: fantasy;
   /*font-family: 'meowcat';*/
-  font-size: calc(.75em + 4vw);
+  font-size: calc(1rem + 3vw);
 }
 #guild-desc{
   background-image: none!important; 
@@ -83,14 +86,19 @@ body{
     align-items: center;
     justify-content: center;
 }
-audio::-webkit-media-controls-play-button {
-    transform: scale(15);
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-panel,
+audio::-webkit-media-controls-button-hover-background{
+    display: block!important;
+    width: 100%;
 }
 audio::-webkit-media-controls-volume-slider,
 audio::-webkit-media-controls-mute-button,
 audio::-webkit-media-controls-current-time-display,
-audio::-webkit-media-controls-timeline{
-  display: none;
+audio::-webkit-media-controls-timeline,
+audio::-webkit-media-controls-overflow-button,
+audio::-webkit-media-controls-overflow-menu-list{
+  display: none!important;
 }
 
 #browser-container span{
@@ -160,7 +168,7 @@ audio::-webkit-media-controls-timeline{
  grid-template-areas:
     ". logs dps all-stars"
     ". logo logo healers"
-    ". logo logo ."
+    ". logo logo archive"
     "guild-news guild-news guild-news site-map";
    margin: auto;
     width: 45vw;
@@ -174,6 +182,9 @@ audio::-webkit-media-controls-timeline{
 #guild-news { grid-area: guild-news;}
 #logo { 
   grid-area: logo; 
+}
+#archive { 
+  grid-area: archive; 
 }
 
 .grid-item{

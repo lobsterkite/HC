@@ -1,4 +1,4 @@
-/*! CSS Used from: https://discord.com/assets/0.657c878cf023b64573ed.css */
+/*! CSS Used from: ../discassets/0.657c878cf023b64573ed.css */
 body{
     --header-primary: #fff;
     --header-secondary: #b9bbbe;
@@ -182,7 +182,7 @@ img[alt]{text-indent:-9999px;}
 .container-3RCQyg{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:0 0 auto;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;border-width:0;border-bottom:1px solid;border-color:var(--background-modifier-accent);padding-bottom:16px;margin:16px;}
 .header-3uLluP{font-size:32px;font-weight:700;line-height:40px;margin:8px 0;color:var(--header-primary);}
 .description-1sDbzZ{color:var(--header-secondary);}
-.emptyChannelIcon-cc932w{width:68px;height:68px;margin-top:16px;border-radius:50%;background-color:var(--background-accent);background-image:url(https://discord.com/assets/a9847a74a2dac6e2b2958b195a8dad96.svg);background-repeat:no-repeat;background-position:50%;}
+.emptyChannelIcon-cc932w{width:68px;height:68px;margin-top:16px;border-radius:50%;background-color:var(--background-accent);background-repeat:no-repeat;background-position:50%;}
 .wrapper-2aW0bm{background-color:var(--background-primary);-webkit-box-shadow:var(--elevation-stroke);box-shadow:var(--elevation-stroke);display:grid;grid-auto-flow:column;-webkit-box-sizing:border-box;box-sizing:border-box;height:32px;border-radius:4px;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-transition:-webkit-box-shadow .1s ease-out;transition:-webkit-box-shadow .1s ease-out;transition:box-shadow .1s ease-out;transition:box-shadow .1s ease-out,-webkit-box-shadow .1s ease-out;position:relative;overflow:hidden;}
 .full-motion .wrapper-2aW0bm:hover{-webkit-box-shadow:var(--elevation-stroke),var(--elevation-medium);box-shadow:var(--elevation-stroke),var(--elevation-medium);}
 .button-1ZiXG9{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;height:24px;padding:4px;min-width:24px;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:0 0 auto;color:var(--interactive-normal);cursor:pointer;position:relative;}
@@ -221,8 +221,8 @@ img[alt]{text-indent:-9999px;}
 .children-19S4PO:after{content:"";position:absolute;top:0;right:0;width:8px;height:100%;}
 .theme-dark .children-19S4PO:after{background:-webkit-gradient(linear,left top,right top,from(rgba(54,57,63,0)),to(var(--background-primary)));background:linear-gradient(90deg,rgba(54,57,63,0) 0,var(--background-primary));}
 /*! CSS Used fontfaces */
-@font-face{font-family:Whitney;font-weight:300;src:url(https://discord.com/assets/6c6374bad0b0b6d204d8d6dc4a18d820.woff) format("woff");}
-@font-face{font-family:Whitney;font-weight:400;src:url(https://discord.com/assets/e8acd7d9bf6207f99350ca9f9e23b168.woff) format("woff");}
-@font-face{font-family:Whitney;font-weight:500;src:url(https://discord.com/assets/3bdef1251a424500c1b3a78dea9b7e57.woff) format("woff");}
-@font-face{font-family:Whitney;font-weight:600;src:url(https://discord.com/assets/be0060dafb7a0e31d2a1ca17c0708636.woff) format("woff");}
-@font-face{font-family:Whitney;font-weight:700;src:url(https://discord.com/assets/8e12fb4f14d9c4592eb8ec9f22337b04.woff) format("woff");}
+@font-face{font-family:Whitney;font-weight:300;src:url(../discassets/6c6374bad0b0b6d204d8d6dc4a18d820.woff) format("woff");}
+@font-face{font-family:Whitney;font-weight:400;src:url(../discassets/e8acd7d9bf6207f99350ca9f9e23b168.woff) format("woff");}
+@font-face{font-family:Whitney;font-weight:500;src:url(../discassets/3bdef1251a424500c1b3a78dea9b7e57.woff) format("woff");}
+@font-face{font-family:Whitney;font-weight:600;src:url(../discassets/be0060dafb7a0e31d2a1ca17c0708636.woff) format("woff");}
+@font-face{font-family:Whitney;font-weight:700;src:url(../discassets/8e12fb4f14d9c4592eb8ec9f22337b04.woff) format("woff");}

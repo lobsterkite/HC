@@ -139,19 +139,19 @@ audio::-webkit-media-controls-overflow-menu-list{
 }
 @font-face{
   font-family: duckTales;
-  src: url(../important-fonts/ducktales.ttf);
+  src: url('../important-fonts/ducktales.ttf');
 }
 @font-face{
   font-family: pussyCat;
-  src: url(../important-fonts/pussycat.ttf);
+  src: url('../important-fonts/pussycat.ttf');
 }
 @font-face{
   font-family: meowcat;
-  src: url(../important-fonts/meowcat.ttf);
+  src: url('../important-fonts/meowcat.ttf');
 }
 @font-face{
   font-family: kara;
-  src: url(../important-fonts/kara.ttf);
+  src: url('../important-fonts/kara.ttf');
 }
 .homepage-center-link span:nth-of-type(1){
   position: absolute;

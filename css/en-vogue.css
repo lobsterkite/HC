@@ -15,13 +15,14 @@ body{
     display: inline-block;
     cursor: pointer;
 }
-.footer-link audio{
-    width: 150px;
+.footer-link audio,
+#gulag audio{
+    width: 100%;
     position: absolute;
     opacity: 0; 
     /* z-index: -1; */
     left: 0;
-    height: 15px;
+    height: 100%;
 }
 
 #goldrow{
@@ -44,7 +45,6 @@ body{
     font-family: cursive;
     font-variant: petite-caps;
     font-size: 1.25rem;
-    text-shadow: 2px 3px black;
     font-weight: bold;
     color: linen;
     text-align: center;
@@ -126,7 +126,7 @@ audio::-webkit-media-controls-overflow-menu-list{
     white-space: pre;
     font-variant: petite-caps;
     font-size: calc(0.5rem + 1vw);
-    text-shadow: 2px 2px black;
+    text-shadow: 1px 1px black;
     font-weight: bold;
     text-align: center;
 }	
@@ -149,6 +149,10 @@ audio::-webkit-media-controls-overflow-menu-list{
   font-family: meowcat;
   src: url(../important-fonts/meowcat.ttf);
 }
+@font-face{
+  font-family: kara;
+  src: url(../important-fonts/kara.ttf);
+}
 .homepage-center-link span:nth-of-type(1){
   position: absolute;
     transform: translate(-100%, -100%);
@@ -167,9 +171,9 @@ audio::-webkit-media-controls-overflow-menu-list{
   gap: 10px;
  grid-template-areas:
     ". logs dps all-stars"
-    ". logo logo healers"
+    "site-map logo logo healers"
     ". logo logo archive"
-    "guild-news guild-news guild-news site-map";
+    ". guild-news . gulag";
    margin: auto;
     width: 45vw;
     margin-leftmax(MINIMUM, min(PREFERRED, MAXIMUM))
@@ -186,7 +190,9 @@ audio::-webkit-media-controls-overflow-menu-list{
 #archive { 
   grid-area: archive; 
 }
-
+#gulag{
+  grid-area: gulag;
+}
 .grid-item{
     display: flex;
     inline-size: -webkit-fill-available;
@@ -217,7 +223,17 @@ audio::-webkit-media-controls-overflow-menu-list{
   width: 0%;
   position: absolute;
 }
-
+#gulag img{
+  min-width: 25%;
+  max-width: 50%;
+}
+#gulag div span{
+  font-family: 'kara';
+  font-size: calc(1em + 1vw);
+  transform: translate(10%, 25%);
+  position: relative;
+    width: 100%;
+}
 #duckbomb span{
   float: right;
     font-family: ducktales;

@@ -170,7 +170,7 @@ audio::-webkit-media-controls-overflow-menu-list{
   justify-items: center;
   gap: 10px;
  grid-template-areas:
-    ". logs dps all-stars"
+    "mages logs dps all-stars"
     "site-map logo logo healers"
     ". logo logo archive"
     ". guild-news . gulag";
@@ -189,6 +189,9 @@ audio::-webkit-media-controls-overflow-menu-list{
 }
 #archive { 
   grid-area: archive; 
+}
+#mages{
+  grid-area: mages;
 }
 #gulag{
   grid-area: gulag;

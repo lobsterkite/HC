@@ -1,0 +1,151 @@
+<html>
+<title>A brief history on HC Mages</title>
+<link rel="stylesheet" href="https://unpkg.com/d3-milestones/build/d3-milestones.css">
+<script src="https://unpkg.com/d3-milestones/build/d3-milestones.min.js"></script>
+
+<style>
+    form{
+        height: 10vh;
+    }
+    #timeline{
+        height: 80vh;
+        width:96vw;
+        margin-left:2vw;
+        margin-right:2vw;
+    }
+</style>
+<body>
+      <form>
+            <h1 style="text-align:center;">A brief history of HC mages</h1>
+    <table><tbody>
+      <!--<tr>
+        <td><label for="checkbox-labels">Use Labels</label></td>
+        <td><input id="checkbox-labels" type="checkbox" checked /></td>
+      </tr>-->
+      <tr>
+        <td><label for="select-orientation">Orientation</label></td>
+        <td>
+          <select id="select-orientation">
+            <option selected value="horizontal">Horizontal</option>
+            <option value="vertical" selected>Vertical</option>
+          </select>
+        </td>
+      </tr>
+        <tr>
+        <td><label for="select-groupby">Aggregate data by</label></td>
+        <td>
+          <select id="select-groupby">
+            <option value="day" selected>Day</option>
+            <option value="week">Week</option>
+            <option value="month">Month</option>
+            <option value="quarter">Quarter</option>
+            <option value="year">Year</option>
+          </select>
+        </td>
+      </tr>
+    <tr>
+        <td><label for="select-distribution">Label Placement:</label></td>
+        <td>
+          <select id="select-distribution">
+            <option value="top-bottom" selected>Top & Bottom</option>
+            <option value="top">Top</option>
+            <option value="bottom">Bottom</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <div id="timeline"></div>
+</body>
+<script>
+  var data = [
+        { category:"j",day:"September 19, 2019",desc:"Our first raid - Welcoming Gumz, Cathoray, Thicchick, Collim, Skadi, Pyrocy, Bruggs, and Nether.  WOW That's a lot of mages!"},
+        { category:"j", day:"October 15, 2019",desc:"Nyer makes a lone appearance"},
+        { category:"j",day:"October 29, 2019",desc:"Jatheek joins"},
+        { category:"j",day:"October 29, 2019",desc:"Tripper arrives, beginning a new age of mage pullers"},
+        { category:"j",day:"December 3, 2019",desc:"Neotokyo joins"},
+        { day:"January 14, 2020",desc:"Phantrox joins"},
+        { day:"December 26, 2019",desc:"Kluu starts raiding on his mage"},
+        { day:"April 29, 2020",desc:"Gillar joins"},
+        { day:"April 14, 2020",desc:"6 months after the start, our longest tenured mage makes his entrance under the name Ill"},
+        { day:"May 12, 2020",desc:"Indizzle arrives with his stream in tow"},
+        { day:"April 21, 2020",desc:"Worstworld joins, aggros trash in BWL, then renames to Pumplord"},
+        { day:"April 14, 2020",desc:"Snowplow joins"},
+        { day:"May 6, 2020",desc:"Norsdec joins"},
+        { day:"August 4, 2020",desc:"Carrador's watch begins"},
+        { day:"July 21, 2020",desc:"Turrible makes an entrance"},
+        { day:"March 16, 2021",desc:"Blackz joins"},
+        { day:"February 9, 2021",desc:"Cantina joins us on his mage"},
+        { day:"February 23, 2021",desc:"Dioxx joins"},
+        { day:"September 8, 2020",desc:"Haha joins"},
+        { day:"February 9, 2021",desc:"Phantrox 2.0 comes in our time of need, ushering in our best Naxx time yet"},
+        { day:"August 26, 2019",desc:"WoW Classic Releases"},
+        { day:"October 15, 2019",desc:"Phase 2 releases"},
+        { day:"December 10, 2019",desc:"Phase 3 releases"},
+        { day:"March 10, 2020",desc:"Phase 4 releases"},
+        { day:"July 28, 2020",desc:"Phase 5 releases"},
+        { day:"December 1, 2020",desc:"Phase 6 releases"},
+        { day:"April 7, 2020",desc:"Gumz retires to the halls of Gnomeregan "},
+        { day:"October 8, 2019",desc:"Cathory fades away"},
+        { day:"July 28, 2020",desc:"Thicchick leaves us for some farm animals"},
+        { day:"October 29, 2019",desc:"Collim disappears"},
+        { day:"November 19, 2019",desc:"Skadi rage quits.  Printer status still unknown"},
+        { day:"July 7, 2020",desc:"Pyro stops raiding with us, but is always there in our hearts"},
+        { day:"February 4, 2020",desc:"Bruggs makes it further than most recall"},
+        { day:"March 18, 2020",desc:"Nether retires.  As his thank you for time well spent in HC he leaves behind his brother Babyjack"},
+        { day:"January 14, 2020",desc:"Where's jatheek?"},
+        { day:"February 18, 2020",desc:"Tripper gives up on his mage"},
+        { day:"March 31, 2020",desc:"Hong Kong turmoil "},
+        { day:"March 24, 2020",desc:"Phantrox retires to the alt raid, otherwise known as Duck Lab"},
+        { day:"April 14, 2020",desc:"Bye bye Kluu "},
+        { day:"July 14, 2020",desc:"Gillar departs"},
+        { day:"March 17, 2021",desc:"Indizzle's last raid as he moves onto greener, hopefully oranger, pastures"},
+        { day:"January 26, 2021",desc:'Pump "quits the game"'},
+        { day:"April 29, 2020",desc:"Snowplow & Pizzaoven leave us"},
+        { day:"June 16, 2020",desc:"Norsdec departs before making brief re-appearances right around new content release"},
+        { day:"August 18, 2020",desc:"Turrible makes an exit"},
+        { day:"March 9, 2021",desc:"Phantrox 2.0 gone?"},
+        { day:"March 10, 2021",desc:"Cantina's last raid with the cat crew"}
+    ];
+
+    var timeline = milestones('#timeline')
+      .mapping({
+        timestamp: 'day',
+        text: 'desc'
+      })
+      .onEventClick((d) => {
+        console.log('click', d);
+        alert(`
+          ${d.text} | ${d.timestamp}
+        `);
+      })
+      .onEventMouseOver((d) => {
+        console.log('mouseover', d);
+      })
+      .onEventMouseLeave((d) => {
+        console.log('mouseleave', d);
+      });
+
+    //var useLabels = document.getElementById('checkbox-labels');
+    var selectGroupBy = document.getElementById('select-groupby');
+    var orientation = document.getElementById('select-orientation');
+    var distribution = document.getElementById('select-distribution');
+    function update() {
+      timeline
+        .parseTime('%B %d, %Y')
+        .aggregateBy(selectGroupBy.options[selectGroupBy.selectedIndex].value)
+        .optimize(true)
+        .useLabels(true)
+        .orientation(orientation.options[orientation.selectedIndex].value)
+        .distribution(distribution.options[distribution.selectedIndex].value)
+        .render(data);
+    }
+
+    //useLabels.onclick = update;
+    selectGroupBy.onchange = update;
+    orientation.onchange = update;
+    distribution.onchange = update;
+    update();
+</script>
+
+</html>

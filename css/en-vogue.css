@@ -24,7 +24,9 @@ body{
     left: 0;
     height: 100%;
 }
-
+#mages span{
+  transform: translate(-125%, 70%);
+}
 #goldrow{
   display: flex;
   grid-column: 1 / 4;
@@ -63,6 +65,7 @@ body{
   font-size: calc(.5rem + .5vw);
   grid-column: 1 / 4;
   overflow: visible;
+  text-shadow: 3px -1px #000;
   z-index: 5;
 }
 #footer, #guild-intro{

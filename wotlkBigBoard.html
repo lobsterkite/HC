@@ -139,7 +139,9 @@
         <span class="dot" onclick="currentSlide(1)"></span>
       </div>
       <script>
-        var slideIndex = 1;
+        var slideIndex;
+        var slides = document.getElementsByClassName("mySlides");
+        slideIndex = slides.length;
         showSlides(slideIndex);
 
         // Next/previous controls

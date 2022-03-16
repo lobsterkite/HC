@@ -12,14 +12,15 @@
     <style>
         /* Slideshow container */
 .slideshow-container {
-  max-width: 90vw;
-  position: relative;
-  margin: auto;
-  max-height: 90vh;
-  text-align: center;
+    position: relative;
+    margin: auto;
+    padding: 0 5vw;
+    text-align: center;
+    width: fit-content;
 }
 .slideshow-container img{
-  width: 80vw;
+    max-width: 90vw;
+    max-height: 90vh;
 }
 /* Hide the images by default */
 .mySlides {
@@ -52,7 +53,7 @@
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
+#prev:hover, #next:hover {
   background-color: rgba(0,0,0,0.8);
 }
 
@@ -88,7 +89,7 @@
 }
 
 .active, .dot:hover {
-  background-color: #adadad;
+  background-color: #717171;
 }
 
 /* Fading animation */

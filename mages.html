@@ -4,9 +4,6 @@
 <script src="https://unpkg.com/d3-milestones/build/d3-milestones.min.js"></script>
 
 <style>
-    form{
-        height: 10vh;
-    }
     #timeline{
         height: 80vh;
         width:96vw;
@@ -54,88 +51,98 @@
           </select>
         </td>
       </tr>
+      <tr>
+        <td><label for="select-xpac">Expansion:</label></td>
+        <td>
+          <select id="select-xpac">
+            <option value="All" selected>All</option>
+            <option value="Vanilla">Vanilla</option>
+            <option value="TBC">TBC</option>
+          </select>
+        </td>
+      </tr>
     </table>
   </form>
   <div id="timeline"></div>
 </body>
 <script>
   var data = [
-        { category:"j",day:"September 19, 2019",desc:"Our first raid - Welcoming Gumz, Cathoray, Thicchick, Collim, Skadi, Pyrocy, Bruggs, and Nether.  WOW That's a lot of mages!"},
-        { category:"j", day:"October 15, 2019",desc:"Nyer makes a lone appearance"},
-        { category:"j",day:"October 29, 2019",desc:"Jatheek joins"},
-        { category:"j",day:"October 29, 2019",desc:"Tripper arrives, beginning a new age of mage pullers"},
-        { category:"j",day:"December 3, 2019",desc:"Neotokyo joins"},
-        { day:"January 14, 2020",desc:"Phantrox joins"},
-        { day:"December 26, 2019",desc:"Kluu starts raiding on his mage"},
-        { day:"April 29, 2020",desc:"Gillar joins"},
-        { day:"April 14, 2020",desc:"6 months after the start, our longest tenured mage makes his entrance under the name Ill (Nikov)"},
-        { day:"May 12, 2020",desc:"Indizzle arrives with his stream in tow"},
-        { day:"April 21, 2020",desc:"Worstworld joins, aggros trash in BWL, then renames to Pumplord"},
-        { day:"April 14, 2020",desc:"Snowplow joins"},
-        { day:"May 6, 2020",desc:"Norsdec joins"},
-        { day:"August 4, 2020",desc:"Carrador's watch begins"},
-        { day:"July 21, 2020",desc:"Turrible makes an entrance"},
-        { day:"March 16, 2021",desc:"Blackz joins"},
-        { day:"February 9, 2021",desc:"Cantina joins us on his mage"},
-        { day:"February 23, 2021",desc:"Dioxx opts for the upgrade (social value baby) from DZ"},
-        { day:"April 13, 2021",desc:"Vashir teams up"},
-        { day:"September 8, 2020",desc:"Haha joins"},
-        { day:"March 30, 2021",desc:"Harmor is summoned"},
-        { day:"March 22, 2021",desc:"Carrador, fresh from sabbatical, returns to bear the burden of the mage"},
-        { day:"April 22, 2021",desc:"Skiip joins in preparation for TBC"},
-        { day:"May 10, 2021",desc:"Halliwellz adds a sole notch"},
-        { day:"May 11, 2021",desc:"After our final Clasic raid Blackz calls it quits"},
-        { day:"May 18, 2021",desc:"Pre-Patch"},
-        { day:"June 1, 2021",desc:"TBCC"},
-        { day:"September 15, 2021",desc:"T5 release"},
-        { day:"December 17, 2021",desc:"T6 release"},
-        { day:"March 20, 2021",desc:"ZA release"},
-        { day:"May 11, 2021",desc:"Vashir decides that the commitment of going into a new expansion as an HC mage is too much to bare"},
-        { day:"May 11, 2021",desc:"Dioxx wisely swaps to shaman going into TBC"},
-        { day:"June 28, 2021",desc:"Betrayedtaco is entrusted to join"},
-        { day:"October 30, 2021",desc:"Taco perishes.  One day we'll learn, if only there were signs..."},
-        { day:"February 23, 2022",desc:"Velionx joins up"},
-        { day:"January 20, 2022",desc:"Manaaddicted begins his reign"},
-        { day:"April 26, 2022",desc:"Velionx ends his short stay"},
-        { day:"April 26, 2022",desc:"Gillar departs well shy of the longest tenured HC mage record"},
-        { day:"September 22, 2021",desc:"Leased is signed.  Possibly the most appropriate name for a mage ever - knock on wood"},
-        { day:"January 14, 2021",desc:"Lease(d) is up"},
-        { day:"September 2, 2021",desc:"Understanding the risks, Gillar boldly returns to his mage"},
-        { day:"June 9, 2021",desc:"Tbusiness joins.  Unbeknownst to him he's being groomed by the powerful (debatable) fire lock Lobsterkite as a scorch bot"},
-        { day:"August 10, 2021",desc:"Tbusiness fully breaks free of the hold of Lobsterkite, becoming the first free mage of TBC"},
-        { day:"September 28, 2021",desc:"Carraddor takes his leave.  Although no longer a mage, the consensus is that the months of suffering he endured as an HC mage led to his full departure"},
-        { day:"August 31, 2021",desc:"Nikov departs after over a year of exposure, a record likely never to be broken"},
-        { day:"August 15, 2021",desc:"Skiip officially resigns. Although technically the first free mage of TBC, he waited to declare it"},
-        { day:"February 9, 2021",desc:"Phantrox 2.0 comes in our time of need, ushering in our best Naxx time yet"},
-        { day:"August 26, 2019",desc:"WoW Classic Releases"},
-        { day:"October 15, 2019",desc:"Phase 2 releases"},
-        { day:"December 10, 2019",desc:"Phase 3 releases"},
-        { day:"March 10, 2020",desc:"Phase 4 releases"},
-        { day:"July 28, 2020",desc:"Phase 5 releases"},
-        { day:"December 1, 2020",desc:"Phase 6 releases"},
-        { day:"April 7, 2020",desc:"Gumz retires to the halls of Gnomeregan"},
-        { day:"October 8, 2019",desc:"Cathory fades away"},
-        { day:"July 28, 2020",desc:"Thicchick leaves us for some farm animals"},
-        { day:"October 29, 2019",desc:"Collim disappears"},
-        { day:"November 19, 2019",desc:"Skadi rage quits.  Printer status still unknown"},
-        { day:"July 7, 2020",desc:"Pyro stops raiding with us, but is always there in our hearts"},
-        { day:"February 4, 2020",desc:"Bruggs makes it further than most recall"},
-        { day:"March 18, 2020",desc:"Nether retires.  As his thank you for time well spent in HC he leaves behind his brother Babyjack"},
-        { day:"January 14, 2020",desc:"Where's jatheek?"},
-        { day:"February 18, 2020",desc:"Tripper gives up on his mage"},
-        { day:"March 31, 2020",desc:"Hong Kong turmoil is too much for Neotokyo to bear"},
-        { day:"March 24, 2020",desc:"Phantrox retires to the alt raid, otherwise known as Duck Lab"},
-        { day:"April 14, 2020",desc:"Bye bye Kluu "},
-        { day:"July 14, 2020",desc:"Gillar departs"},
-        { day:"March 17, 2021",desc:"Indizzle's moves onto greener, hopefully oranger, pastures as this time his faerlina transfer succeeds"},
-        { day:"January 26, 2021",desc:'Pump "quits the game"'},
-        { day:"April 29, 2020",desc:"Snowplow & Pizzaoven leave us"},
-        { day:"June 16, 2020",desc:"Norsdec departs before making brief re-appearances right around new content release"},
-        { day:"August 18, 2020",desc:"Turrible makes an exit"},
-        { day:"March 9, 2021",desc:"Phantrox 2.0 gone?"},
-        { day:"March 10, 2021",desc:"Cantina's last raid with the cat crew"},
-        { day:"March 23, 2021",desc:"Haha no more? Not very funny =("},
-        { day:"April 20, 2021",desc:"Polarity therapy failed on Hamor"}
+        { category:"Vanilla",day:"September 19, 2019",desc:"Our first raid - Welcoming Gumz, Cathoray, Thicchick, Collim, Skadi, Pyrocy, Bruggs, and Nether.  WOW That's a lot of mages!"},
+        { category:"Vanilla", day:"October 15, 2019",desc:"Nyer makes a lone appearance"},
+        { category:"Vanilla",day:"October 29, 2019",desc:"Jatheek joins"},
+        { category:"Vanilla",day:"October 29, 2019",desc:"Tripper arrives, beginning a new age of mage pullers"},
+        { category:"Vanilla",day:"December 3, 2019",desc:"Neotokyo joins"},
+        {category:"Vanilla", day:"January 14, 2020",desc:"Phantrox joins"},
+        {category:"Vanilla", day:"December 26, 2019",desc:"Kluu starts raiding on his mage"},
+        {category:"Vanilla", day:"April 29, 2020",desc:"Gillar joins"},
+        {category:"Vanilla", day:"April 14, 2020",desc:"6 months after the start, our longest tenured mage makes his entrance under the name Ill (Nikov)"},
+        {category:"Vanilla", day:"May 12, 2020",desc:"Indizzle arrives with his stream in tow"},
+        {category:"Vanilla", day:"April 21, 2020",desc:"Worstworld joins, aggros trash in BWL, then renames to Pumplord"},
+        {category:"Vanilla", day:"April 14, 2020",desc:"Snowplow joins"},
+        {category:"Vanilla", day:"May 6, 2020",desc:"Norsdec joins"},
+        {category:"Vanilla", day:"August 4, 2020",desc:"Carrador's watch begins"},
+        {category:"Vanilla", day:"July 21, 2020",desc:"Turrible makes an entrance"},
+        {category:"Vanilla", day:"March 16, 2021",desc:"Blackz joins"},
+        {category:"Vanilla", day:"February 9, 2021",desc:"Cantina joins us on his mage"},
+        {category:"Vanilla", day:"February 23, 2021",desc:"Dioxx opts for the upgrade (social value baby) from DZ"},
+        {category:"Vanilla", day:"April 13, 2021",desc:"Vashir teams up"},
+        {category:"Vanilla", day:"September 8, 2020",desc:"Haha joins"},
+        {category:"Vanilla", day:"March 30, 2021",desc:"Harmor is summoned"},
+        {category:"Vanilla", day:"March 22, 2021",desc:"Carrador, fresh from sabbatical, returns to bear the burden of the mage"},
+        {category:"Vanilla", day:"April 22, 2021",desc:"Skiip joins in preparation for TBC"},
+        {category:"Vanilla", day:"May 10, 2021",desc:"Halliwellz adds a sole notch"},
+        {category:"Vanilla", day:"May 11, 2021",desc:"After our final Clasic raid Blackz calls it quits"},
+        {category:"Vanilla", day:"May 18, 2021",desc:"Pre-Patch"},
+        {category:"TBC", day:"June 1, 2021",desc:"TBCC"},
+        {category:"TBC", day:"September 15, 2021",desc:"T5 release"},
+        {category:"TBC", day:"December 17, 2021",desc:"T6 release"},
+        {category:"TBC", day:"March 20, 2022",desc:"ZA release"},
+        {category:"Vanilla", day:"May 11, 2021",desc:"Vashir decides that the commitment of going into a new expansion as an HC mage is too much to bare"},
+        {category:"Vanilla", day:"May 11, 2021",desc:"Dioxx wisely swaps to shaman going into TBC"},
+        {category:"TBC", day:"June 28, 2021",desc:"Betrayedtaco is entrusted to join"},
+        {category:"TBC", day:"October 30, 2021",desc:"Taco perishes.  One day we'll learn, if only there were signs..."},
+        {category:"TBC", day:"February 23, 2022",desc:"Velionx joins up"},
+        {category:"TBC", day:"January 20, 2022",desc:"Manaaddicted begins his reign"},
+        {category:"TBC", day:"April 26, 2022",desc:"Velionx ends his short stay"},
+        {category:"TBC", day:"April 26, 2022",desc:"Gillar departs well shy of the longest tenured HC mage record"},
+        {category:"TBC", day:"September 22, 2021",desc:"Leased is signed.  Possibly the most appropriate name for a mage ever - knock on wood"},
+        {category:"TBC", day:"January 14, 2022",desc:"Lease(d) is up"},
+        {category:"TBC", day:"September 2, 2021",desc:"Understanding the risks, Gillar boldly returns to his mage"},
+        {category:"TBC", day:"June 9, 2021",desc:"Tbusiness joins.  Unbeknownst to him he's being groomed by the powerful (debatable) fire lock Lobsterkite as a scorch bot"},
+        {category:"TBC", day:"August 10, 2021",desc:"Tbusiness fully breaks free of the hold of Lobsterkite, becoming the first free mage of TBC"},
+        {category:"TBC", day:"September 28, 2021",desc:"Carraddor takes his leave.  Although no longer a mage, the consensus is that the months of suffering he endured as an HC mage led to his full departure"},
+        {category:"TBC", day:"August 31, 2021",desc:"Nikov departs after over a year of exposure, a record likely never to be broken"},
+        {category:"TBC", day:"August 15, 2021",desc:"Skiip officially resigns. Although technically the first free mage of TBC, he waited to declare it"},
+        {category:"Vanilla", day:"February 9, 2021",desc:"Phantrox 2.0 comes in our time of need, ushering in our best Naxx time yet"},
+        {category:"Vanilla", day:"August 26, 2019",desc:"WoW Classic Releases"},
+        {category:"Vanilla", day:"October 15, 2019",desc:"Phase 2 releases"},
+        {category:"Vanilla", day:"December 10, 2019",desc:"Phase 3 releases"},
+        {category:"Vanilla", day:"March 10, 2020",desc:"Phase 4 releases"},
+        {category:"Vanilla", day:"July 28, 2020",desc:"Phase 5 releases"},
+        {category:"Vanilla", day:"December 1, 2020",desc:"Phase 6 releases"},
+        {category:"Vanilla", day:"April 7, 2020",desc:"Gumz retires to the halls of Gnomeregan"},
+        {category:"Vanilla", day:"October 8, 2019",desc:"Cathory fades away"},
+        {category:"Vanilla", day:"July 28, 2020",desc:"Thicchick leaves us for some farm animals"},
+        {category:"Vanilla", day:"October 29, 2019",desc:"Collim disappears"},
+        {category:"Vanilla", day:"November 19, 2019",desc:"Skadi rage quits.  Printer status still unknown"},
+        {category:"Vanilla", day:"July 7, 2020",desc:"Pyro stops raiding with us, but is always there in our hearts"},
+        {category:"Vanilla", day:"February 4, 2020",desc:"Bruggs makes it further than most recall"},
+        {category:"Vanilla", day:"March 18, 2020",desc:"Nether retires.  As his thank you for time well spent in HC he leaves behind his brother Babyjack"},
+        {category:"Vanilla", day:"January 14, 2020",desc:"Where's jatheek?"},
+        {category:"Vanilla", day:"February 18, 2020",desc:"Tripper gives up on his mage"},
+        {category:"Vanilla", day:"March 31, 2020",desc:"Hong Kong turmoil is too much for Neotokyo to bear"},
+        {category:"Vanilla", day:"March 24, 2020",desc:"Phantrox retires to the alt raid, otherwise known as Duck Lab"},
+        {category:"Vanilla", day:"April 14, 2020",desc:"Bye bye Kluu "},
+        {category:"Vanilla", day:"July 14, 2020",desc:"Gillar departs"},
+        {category:"Vanilla", day:"March 17, 2021",desc:"Indizzle's moves onto greener, hopefully oranger, pastures as this time his faerlina transfer succeeds"},
+        {category:"Vanilla", day:"January 26, 2021",desc:'Pump "quits the game"'},
+        {category:"Vanilla", day:"April 29, 2020",desc:"Snowplow & Pizzaoven leave us"},
+        {category:"Vanilla", day:"June 16, 2020",desc:"Norsdec departs before making brief re-appearances right around new content release"},
+        {category:"Vanilla", day:"August 18, 2020",desc:"Turrible makes an exit"},
+        {category:"Vanilla", day:"March 9, 2021",desc:"Phantrox 2.0 gone?"},
+        {category:"Vanilla", day:"March 10, 2021",desc:"Cantina's last raid with the cat crew"},
+        {category:"Vanilla", day:"March 23, 2021",desc:"Haha no more? Not very funny =("},
+        {category:"Vanilla", day:"April 20, 2021",desc:"Polarity therapy failed on Hamor"}
     ];
 
     var timeline = milestones('#timeline')
@@ -160,7 +167,9 @@
     var selectGroupBy = document.getElementById('select-groupby');
     var orientation = document.getElementById('select-orientation');
     var distribution = document.getElementById('select-distribution');
+    var xPac = document.getElementById('select-xpac');
     function update() {
+      let filtered = Object.values(data).filter(x=>(xPac.value=="All" || x.category==xPac.value));
       timeline
         .parseTime('%B %d, %Y')
         .aggregateBy(selectGroupBy.options[selectGroupBy.selectedIndex].value)
@@ -168,13 +177,14 @@
         .useLabels(true)
         .orientation(orientation.options[orientation.selectedIndex].value)
         .distribution(distribution.options[distribution.selectedIndex].value)
-        .render(data);
+        .render(filtered);
     }
 
     //useLabels.onclick = update;
     selectGroupBy.onchange = update;
     orientation.onchange = update;
     distribution.onchange = update;
+    xPac.onchange = update;
     update();
 </script>
 
